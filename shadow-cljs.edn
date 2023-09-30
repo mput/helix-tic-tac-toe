@@ -1,0 +1,21 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[cider/cider-nrepl "0.30.0"]
+  [binaryage/devtools "1.0.7"]
+  [lilactown/helix "0.1.10"]]
+
+ :dev-http {8080 "public"}
+ :builds
+ {:frontend
+  {:target :browser
+   :modules {:main {:init-fn app/init}}
+   :dev {:devtools {:reload-strategy :full
+                    :preloads     [devtools.preload dev]}
+         :compiler-options {:output-feature-set :es6
+                            :external-config {:devtools/config {:features-to-install           [:formatters :hints]
+                                                                #_#_:dont-detect-custom-formatters true}}}}}}}
