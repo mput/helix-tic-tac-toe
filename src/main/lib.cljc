@@ -13,7 +13,9 @@
                   (rest body)
                   body)
            ;; feature flags to enable by default
-           default-opts {:helix/features {:fast-refresh true}}]
+           default-opts {:helix/features {:fast-refresh true
+                                          :define-factory true
+                                          :check-invalid-hooks-usage true}}]
        `(helix.core/defnc ~type ~params
           ;; we use `merge` here to allow indidivual consumers to override feature
           ;; flags in special cases
